@@ -1,11 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Payment Successful</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful 🎉</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            animation: pop-in 0.5s ease-out;
+        }
+
+        .checkmark svg {
+            width: 50px;
+            height: 50px;
+            fill: white;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .redirect-msg {
+            color: #888;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        @keyframes pop-in {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Thank you!</h1>
-  <p>Your payment was successful. You may now close this tab.</p>
+
+    <div class="container">
+        <div class="checkmark">
+            <svg viewBox="0 0 52 52">
+                <path d="M26 1C12.6 1 1 12.6 1 26s11.6 25 25 25 25-11.6 25-25S39.4 1 26 1zm0 48C14.1 49 5 39.9 5 28S14.1 7 26 7s21 9.1 21 21-9.1 21-21 21z"/>
+                <path d="M38.3 16.3L21.5 33.1l-7.7-7.7-2.1 2.1 9.8 9.8 19.8-19.8z"/>
+            </svg>
+        </div>
+        <h1>Payment Successful 🎉</h1>
+        <p>Thank you! Your payment was processed successfully.</p>
+        <p class="redirect-msg">You may now close this tab.</p>
+    </div>
+
+    <script>
+        const extAPI = typeof browser !== 'undefined' ? browser : chrome;
+
+        // Notify the extension
+        extAPI.runtime.sendMessage({ action: "subscriptionSuccess" });
+
+        // Optional: Auto-close the page after 5 seconds
+        setTimeout(() => {
+            window.close();
+        }, 5000);
+    </script>
+
 </body>
 </html>
