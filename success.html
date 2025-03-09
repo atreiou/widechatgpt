@@ -78,16 +78,4 @@
     </div>
 
     <script>
-        const extAPI = typeof browser !== 'undefined' ? browser : chrome;
-
-        // Notify the extension
-        extAPI.runtime.sendMessage({ action: "subscriptionSuccess" });
-
-        // Optional: Auto-close the page after 5 seconds
-        setTimeout(() => {
-            window.close();
-        }, 5000);
-    </script>
-
-</body>
-</html>
+   
